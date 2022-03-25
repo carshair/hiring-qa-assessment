@@ -1,4 +1,4 @@
-import { Body, Get, JsonController } from "routing-controllers";
+import { Body, Get, JsonController, Post } from "routing-controllers";
 import fetch from "node-fetch";
 import { V1_API_DOMAIN } from "../../constants";
 
@@ -15,7 +15,7 @@ export interface LoginRequest {
 }
 @JsonController('/auth')
 export default class AuthController {
-  @Get("/login")
+  @Post("/login")
   async login(@Body() body: LoginRequest) {
     const response = await fetch(`${V1_API_DOMAIN}/v1/auth/login`, {
       body: JSON.stringify(body)

@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+    "experimentalDecorators": true,
+		"allowSyntheticDefaultImports": true,
+		"outDir": "./build",
+		"target": "ESNext",
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noUncheckedIndexedAccess": true,
+		"allowJs": false,
+		"moduleResolution": "node",
+		"lib": [
+			"ES2020"
+		]
+	}
+}

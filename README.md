@@ -20,7 +20,7 @@ In the `master` branch, there is only one route defined:
 In the `feature/authenticated-resource` branch, we have two new untested endpoints:
 
 - `POST /auth/login` - an authorization endpoint. This endpoint relies on a v1 endpoint to validate credentials. For the purposes of this assignment, you can assume authorization is correctly implemented in v1 APIs.
-- `GET /protected` - a protected resource. This endpoint should return a 401 status code unless the user's authorization is validated by V1.
+- `POST /protected` - a protected resource. This endpoint should return a 401 status code unless the user's authorization is validated by V1.
 
 ### Scope Clarifications
 

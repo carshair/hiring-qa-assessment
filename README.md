@@ -61,7 +61,7 @@ In the `feature/authenticated-resource` branch, we have two new untested endpoin
 This template project is composed of the following stack:
 
 - TypeScript
-- Node.js
+- Node.js v16.15+
 - Express
 - routing-controllers
 - jest

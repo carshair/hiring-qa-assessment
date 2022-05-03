@@ -1,5 +1,4 @@
 import { Body, JsonController, Post } from "routing-controllers";
-import fetch from "node-fetch";
 import { V1_API_DOMAIN } from "../../constants";
 
 

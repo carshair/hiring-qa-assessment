@@ -1,3 +1,5 @@
+import "reflect-metadata";
+
 import { Application } from "express";
 import { createExpressServer } from "routing-controllers";
 import Home from "./controllers/home";

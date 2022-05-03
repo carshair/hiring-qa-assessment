@@ -51,5 +51,8 @@
     "collectCoverageFrom": [
       "<rootDir>/**/*.ts"
     ]
+  },
+  "engines": {
+    "node": "^16.15"
   }
 }

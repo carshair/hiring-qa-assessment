@@ -6,7 +6,7 @@
   "author": "Peter Mah <peter.r.mah@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node ./build/server/index.js ",
+    "start": "nodemon ./build/server/index.js ",
     "dev": "nodemon --ignore ./build -e js,ts,json,css,html --exec 'yarn build && yarn test && yarn start'",
     "build": "yarn clean && yarn build-server",
     "lint": "eslint",
@@ -16,7 +16,8 @@
   },
   "dependencies": {
     "express": "^4.17.3",
-    "node-fetch": "^3.2.3",
+    "node-fetch": "^3.2.9",
+    "reflect-metadata": "^0.1.13",
     "routing-controllers": "^0.9.0"
   },
   "devDependencies": {
@@ -28,8 +29,8 @@
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.15.0",
     "@typescript-eslint/parser": "^5.15.0",
-    "class-transformer": "^0.5.1",
-    "class-validator": "^0.13.2",
+    "class-transformer": "^0.3.1",
+    "class-validator": "^0.12.2",
     "eslint": "^8.11.0",
     "jest": "27",
     "nodemon": "^2.0.15",

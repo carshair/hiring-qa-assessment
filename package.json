@@ -8,9 +8,10 @@
   "scripts": {
     "start": "nodemon ./build/server/index.js ",
     "dev": "nodemon --ignore ./build -e js,ts,json,css,html --exec 'yarn build && yarn test && yarn start'",
-    "build": "yarn clean && yarn build-server",
+    "build": "yarn build-server",
     "lint": "eslint",
-    "test": "NODE_ENV=testing jest ./src/__tests__",
+    "test": "jest --watchAll --no-cache",
+    "test:ci": "jest",
     "clean": "rm -rf ./build/*",
     "build-server": "tsc"
   },
@@ -55,6 +56,6 @@
     ]
   },
   "engines": {
-    "node": "^16.15"
+    "node": "^17.7.1"
   }
 }

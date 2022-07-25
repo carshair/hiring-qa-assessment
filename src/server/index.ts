@@ -3,17 +3,21 @@ import "reflect-metadata";
 import { Application } from "express";
 import { createExpressServer } from "routing-controllers";
 import Home from "./controllers/home";
+import Auth from "./controllers/auth";
+import Protect from "./controllers/protected";
 /**
  * Start Server
  */
 const expressApp: Application = createExpressServer({
   classTransformer: true,
-  routePrefix: "/v3",
+  routePrefix: "/v1",
   defaultErrorHandler: false,
   middlewares: [
   ],
   controllers: [
-    Home
+    Home,
+    Auth,
+    Protect
   ],
 });
 export default expressApp;

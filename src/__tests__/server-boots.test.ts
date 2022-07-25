@@ -10,7 +10,7 @@ describe("Server", () => {
     expect(()=>new HomeController()).not.toThrow();
   })
   it("Serves homepage", async () => {
-    const response = await testServer.get("/v3/hello");
+    const response = await testServer.get("/v1/hello");
     expect(response.status).toBe(200);
     expect(response.text).toEqual(JSON.stringify(HELLO_RESPONSE));
   });

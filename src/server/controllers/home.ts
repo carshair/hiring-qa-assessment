@@ -1,8 +1,8 @@
 import { Get, JsonController } from "routing-controllers";
-import { HELLO_RESPONSE } from "../../constants";
+import { HELLO_RESPONSE, HELLO_ROUTE } from "../../constants";
 @JsonController()
 export default class HomeController {
-  @Get("/hello")
+  @Get(HELLO_ROUTE)
   home() {
     return HELLO_RESPONSE;
   }

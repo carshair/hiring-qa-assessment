@@ -1,47 +1,168 @@
-# carSHAiR QA Assessment
+# CarSHAiR QA Assessment
 
-![carSHAiR Logo](https://www.carshair.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FCarSHAiR-Logo.bfa0a90d.png&w=3840&q=75)
-### Background
+![CarSHAiR Logo](https://www.carshair.com/CarSHAiR-Logo.png)
 
-carSHAiR is a peer to peer car sharing platform with a mission to bring high tech solutions to provide an exceptional experience for Guests and Hosts within the car sharing space.
+## Background
 
-Often, our developers will produce untested code, and QA will assist in testing their work before it is accepted and merged. We will use this repository to assess your proficiency in source control and testing.
+CarSHAiR is a peer to peer car sharing platform with a mission to bring high tech solutions to provide an exceptional experience for Guests and Hosts within the car sharing space.
+
+Often, our developers will produce code, and QA will assist in testing their work before it is accepted and merged. We will use this repository to assess your proficiency in testing.
 
 ### Objectives
 
-This repository is a simplified representation of our V2 backend APIs. It contains two branches - a `master` branch and a feature branch named `feature/authenticated-resource`. Your task is to branch off the feature branch, test the new feature, then merge your branch back into the feature branch. The branch you create should be named `feature/authenticated-resource-tests`.
+This repository is a simple notes application. There are several bugs intentionally included. Your goal is to identify these bugs.
 
-### Project
+For bonus points, you may also submit fixes for any bugs you find.
 
-In the `master` branch, there is only one route defined:
+### Setup
 
-- GET /hello - a very simple health-check endpoint returning a greeting. This is to help you ensure the project is configured correctly.
+Clone the repository:
 
-In the `feature/authenticated-resource` branch, we have two new untested endpoints:
+`git clone git@github.com:carshair/hiring-qa-assessment.git`
 
-- `POST /auth/login` - an authorization endpoint. This endpoint relies on a v1 endpoint to validate credentials. For the purposes of this assignment, you can assume authorization is correctly implemented in v1 APIs.
-- `POST /protected` - a protected resource. This endpoint should return a 401 status code unless the user's authorization is validated by V1.
+Change directories:
+
+`cd hiring-qa-assessment`
+
+#### MySQL
+
+Create a `.env` file:
+
+`touch .env`
+
+Add values for the following variables:
+- MYSQL_DATABASE
+- MYSQL_USER
+- MYSQL_PASSWORD
+- MYSQL_ROOT_PASSWORD
+- MYSQL_PORT
+
+Start the mysql server:
+
+`docker-compose up -d mysql`
+
+#### Backend
+
+Create a `.env` file:
+
+`touch backend/.env`
+
+Add values for the following variables (these should match MySQL values):
+- TYPEORM_HOSTNAME
+- TYPEORM_USERNAME
+- TYPEORM_DATABASE
+- TYPEORM_PASSWORD
+- TYPEORM_PORT
+
+Start the server in development mode:
+
+`yarn dev`
+
+
+#### Frontend
+
+Create a `.env` file:
+
+`touch frontend/.env`
+
+Add the following variable:
+- NEXT_PUBLIC_API_URL=http://localhost:3001
+
+
+Start the server in development mode:
+
+`yarn dev`
+
+### Project Description
+
+#### Frontend
+
+The frontend is a NextJS application. We've implemented a notes app, though there are some issues.
+
+The pages we expect to be tested are:
+
+- `GET /`
+
+  This homepage indicates whether the project is set up correctly.
+
+- `GET /search`
+
+  A form to search notes by text and owner email address. The search results displayed on the same page.
+
+- `GET /login`
+
+  Allows you to log into the site. This will be necessary for further testing.
+
+- `GET /note/{noteId}`
+
+  Displays the contents of the selected note.
+
+- `GET /profile`
+
+  Displays information about your account. Displays notes you own. Allows creation of new notes.
+
+#### Backend
+
+The backend is an Express application using TypeORM. We've defined a number of API routes:
+
+- `GET /hello`
+
+  A simple API route that returns static content. The message returned from this endpoint is displayed on the homepage. This is used to validate the servers are running and CORS is working correctly.
+
+- `POST /login`
+
+  {
+    "email": "tester@shair.co",
+    "password": "secure-password-for-assessment"
+  }
+
+  A route that when given a valid email/password combination, returns a login token.
+
+- `POST /note`
+
+  {
+    "text": "Sample note!",
+    "userId": "81737cbc-52eb-433f-bafe-c6b9b36b6503"
+  }
+
+  Required Cookies: `token`
+
+  Creates a note owned by the current user with the given text content.
+
+- `GET /note/:noteId`
+
+  Required Cookies: `token`
+
+  Returns information about the specified note. You are allowed to view notes owned by any user.
+
+- `GET /profile`
+
+  Required Cookies: `token`
+
+  Returns information about your user, including all notes you own.
+
+- `POST /search`
+
+  {
+    "text": "note substring"
+    "size": 10,
+    "skip": 0
+  }
+  Returns notes containing the specified substring
 
 ### Scope Clarifications
 
-- V1 is intentionally left unimplemented. Assume V1 is fully tested and operates according to logic used in `feature/authenticated-resource`.
-- Any bugs found in the `feature/authenticated-resource` can be addressed in any of the following ways:
-  - Produce a test which fails unless the bug is fixed
-  - Create a branch which fixes the bug, merge that branch into `feature/authenticated-resource`, then sync `feature/authenticated-resource` into `feature/authenticated-resource-tests`
-  - There is one bug intentionally included for you to find and address
-- Coverage requirements are unspecified, but we would like to see test coverage as high as possible in the time allowed.
-
-#### Constraints
-
-- You may not modify `master`.
-- Any changes to `feature/authenticated-resource` must be performed through merges to simulate reviewed pull requests.
-- No additional packages should be required, but if you choose to install any, please provide an explanation of why they were added.
+- We hope for the frontend to be tested with Cypress
+- We hope for the backend to be tested with Postman or Jest
+- Please implement regression tests for any bugs you find. Your regression tests should fail until fixes are implemented.
+- For bonus points, you may implement bug fixes.
+- If you choose to implement tests using jest, we have no specified coverage requirement. We would like to see coverage as high as reasonable in the allotted time.
 
 ### Resources
 
 - [Jest Docs](https://jestjs.io/docs/getting-started)
 - [SuperTest README](https://github.com/visionmedia/supertest#supertest)
-- [Routing-Controllers README](https://github.com/typestack/routing-controllers#routing-controllers)
+- [Cypress Docs](https://docs.cypress.io/api/table-of-contents)
 
 ### Submission Requirements
 
@@ -49,32 +170,19 @@ In the `feature/authenticated-resource` branch, we have two new untested endpoin
   - Show us you are comfortable working with git by keeping a detailed git history
 - Please omit the company name from your repository/project name
 - (Optional) We are always trying to improve the assessment experience for future candidates. When sending your submission, please provide some feedback on the assessment description including details such as:
-  - How long the assessment took to complete
-  - Whether or not the requirements were clear
-  - On a scale of 1 - 10, the level of difficulty
-  - If given the choice, would they rather have done an Leet-code style assessment over a project-based assessment
+  - How long did the assessment take to complete?
+  - Were the requirements clear?
+  - On a scale of 1 - 10, what was the level of difficulty?
+  - How can we improve this assessment?
 
-  Feedback on the assessment description will not affect our evaluation of your submission.
+Feedback on the assessment description will not affect our evaluation of your submission.
 
-## Template Project Setup
+## Project Stack
 
 This template project is composed of the following stack:
 
 - TypeScript
-- Node.js v16.15+
+- Node.js v16.5+
 - Express
 - routing-controllers
-- jest
-- supertest
-
-### Getting Started
-
-To bring up the environment, perform the following steps:
-
-1. Bring up express server in development mode
-
-   ```bash
-   # In your terminal
-   yarn dev
-   # Exposes express app on port 3000
-   ```
+- NextJS

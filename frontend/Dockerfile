@@ -1,4 +1,5 @@
 FROM node:16
+WORKDIR /opt/frontend
 ADD frontend/component ./component
 ADD frontend/utils ./utils
 ADD frontend/pages ./pages

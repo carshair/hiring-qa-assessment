@@ -1,13 +1,13 @@
+import "dotenv/config";
+import "reflect-metadata";
 import { Server } from "http";
 import { AddressInfo } from "net";
-import "reflect-metadata";
 import { HELLO_ROUTE } from "./constants";
 import { AppDataSource } from "./data-source"
 import { Note } from "./entity/Note";
 import { User } from "./entity/User";
 import expressApp, { BASE_ROUTE } from "./server";
 import bcrypt from "bcrypt";
-
 
 export const server = AppDataSource.initialize()
 .then(async dataSource => {

@@ -10,9 +10,14 @@ Often, our developers will produce code, and QA will assist in testing their wor
 
 ### Objectives
 
-This repository is a simple notes application. There are several bugs intentionally included. Your goal is to identify these bugs.
+This repository is a simple notes application. There are more than five bugs intentionally included. Your goal is to identify and report these bugs in as much detail as is reasonable. We hope to see:
+* Brief description of the bug
+* Screenshots, error messages, any other supporting details
+* Steps to reproduce the bug
+* What type of bug this is (Cosmetic/Functional/Security)
+* Estimated difficulty to fix the bug
 
-For bonus points, you may also submit fixes for any bugs you find.
+For bonus points, you may also submit fixes.
 
 ### Setup
 

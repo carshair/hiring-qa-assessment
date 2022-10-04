@@ -41,6 +41,7 @@ Add values for the following variables:
 - MYSQL_PASSWORD
 - MYSQL_ROOT_PASSWORD
 - MYSQL_PORT
+- ALLOWED_ORIGIN=http://localhost:3001
 
 Start the mysql server:
 
@@ -66,13 +67,9 @@ Start the server in development mode:
 
 #### Frontend
 
-Create a `.env` file:
+Edit the `.env` in the `frontend` folder. Set the following variable:
 
-`touch frontend/.env`
-
-Add the following variable:
 - NEXT_PUBLIC_API_URL=http://localhost:3001
-
 
 Start the server in development mode:
 

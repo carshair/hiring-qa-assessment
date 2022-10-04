@@ -19,7 +19,7 @@ const expressApp: Application = createExpressServer({
   },
   cors: {
     credentials: true,
-    origin: 'http://localhost:3000',
+    origin: process.env.ALLOWED_ORIGIN,
   },
   routePrefix: BASE_ROUTE,
   middlewares: [],

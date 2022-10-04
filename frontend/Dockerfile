@@ -10,6 +10,7 @@ ADD frontend/next.config.js .
 ADD frontend/package.json .
 ADD frontend/constants.ts .
 ADD frontend/tsconfig.json .
+ADD frontend/.env .
 RUN yarn
 RUN yarn build
 ENTRYPOINT yarn start

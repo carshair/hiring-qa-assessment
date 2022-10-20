@@ -21,6 +21,12 @@ For bonus points, you may also submit fixes.
 
 ### Setup
 
+#### Pre-deployed
+If you want to get started right away, you can visit the deployed application:
+[Deployed QA Hiring Assignment](https://master.hiring-assignment.qa.c66.me/)
+
+#### Run it locally
+
 Clone the repository:
 
 `git clone git@github.com:carshair/hiring-qa-assessment.git`

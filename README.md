@@ -27,6 +27,12 @@ If you want to get started right away, you can visit the deployed application:
 
 #### Run it locally
 
+Install the project dependencies, including Git, Docker, NodeJS, and Yarn
+* https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+* https://docs.docker.com/get-docker/
+* https://nodejs.org/en/download/
+* https://yarnpkg.com/getting-started/install
+
 Clone the repository:
 
 `git clone git@github.com:carshair/hiring-qa-assessment.git`
@@ -68,7 +74,7 @@ Add values for the following variables (these should match MySQL values):
 
 Start the server in development mode:
 
-`yarn dev`
+`cd backend && yarn dev`
 
 
 #### Frontend
@@ -79,7 +85,7 @@ Edit the `.env` in the `frontend` folder. Set the following variable:
 
 Start the server in development mode:
 
-`yarn dev`
+`cd frontend && yarn dev`
 
 ### Project Description
 

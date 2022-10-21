@@ -83,7 +83,7 @@ Edit the `.env` in the `frontend` folder. Set the following variable:
 
 - NEXT_PUBLIC_API_URL=http://localhost:3001
 
-Start the server in development mode:
+In a separate terminal window, start the server in development mode:
 
 `cd frontend && yarn dev`
 

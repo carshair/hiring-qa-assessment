@@ -75,7 +75,7 @@ const Profile: NextPage<Props> = ({loggedIn}: Props) => {
       <h2>New Note</h2>
       <form action="#" onSubmit={submit}>
         <label htmlFor="searchText">Note Content<br/>
-        <textarea id="searchText" name="searchText" />
+        <textarea id="searchText" name="searchText" required />
         </label><br />
         <input type="hidden" name="ownerId" value={ownerId || ''} />
         <input type="submit" disabled={!ownerId}/>
@@ -84,10 +84,12 @@ const Profile: NextPage<Props> = ({loggedIn}: Props) => {
       <h2>Previous Notes</h2>
       <div className={styles.grid}>
         {notes.map(note=>{
+          const shortNote = note.text.split('\n')[0].substr(0,255);
+          const noteElipsised = shortNote !== note.text;
           return <a key={note.id} href={`/note/${note.id}`} className={styles.card}>
             <h2>Note {`${note.id}`} &rarr;</h2>
             <h4>Owner: {ownerId}</h4>
-            <p>{note.text.split('\n')[0].substr(0,255)}</p>
+            <p>{shortNote}{noteElipsised ? <>&hellip;</> : ''}</p>
           </a>;
         })}
       </div>

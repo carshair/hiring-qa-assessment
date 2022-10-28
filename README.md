@@ -165,9 +165,7 @@ The backend is an Express application using TypeORM. We've defined a number of A
   Returns notes containing the specified substring
 
 ### Scope Clarifications
-
-- We hope for the frontend to be tested with Cypress
-- We hope for the backend to be tested with Postman or Jest
+- We hope for the frontend to be tested with Cypress and the backend to be tested with Postman or Jest, but use whatever tools you deem best.
 - Please implement regression tests for any bugs you find. Your regression tests should fail until fixes are implemented.
 - For bonus points, you may implement bug fixes.
 - If you choose to implement tests using jest, we have no specified coverage requirement. We would like to see coverage as high as reasonable in the allotted time.

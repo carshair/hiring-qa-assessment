@@ -97,10 +97,12 @@ const Search: NextPage<Props> = ({loggedIn}: Props) => {
 
       <div className={styles.grid}>
         {notes.map(note=>{
+          const shortNote = note.text.split('\n')[0].substr(0,255);
+          const noteElipsised = shortNote !== note.text;
           return <a key={note.id} href={`/notes/${note.id}`} className={styles.card}>
             <h2>Note {`${note.id}`} &rarr;</h2>
             <h4>Owner: {`${note.user}`}</h4>
-            <p>{note.text.split('\n')[0].substr(0,255)}</p>
+            <p>{shortNote}{noteElipsised ? <>&hellip;</> : ''}</p>
           </a>;
         })}
       </div>

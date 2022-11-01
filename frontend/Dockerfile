@@ -5,6 +5,7 @@ ADD frontend/utils ./utils
 ADD frontend/pages ./pages
 ADD frontend/public ./public
 ADD frontend/styles ./styles
+ADD frontend/middleware.ts .
 ADD frontend/next-env.d.ts .
 ADD frontend/next.config.js .
 ADD frontend/package.json .

@@ -1272,6 +1272,11 @@ natural-compare@^1.4.0:
   resolved "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
+next-ssl-redirect-middleware@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/next-ssl-redirect-middleware/-/next-ssl-redirect-middleware-0.1.4.tgz#f396a92d6801c1772758a6952ea0443b73190eb6"
+  integrity sha512-SWJBDyyI+5imAW11TWDXSsuu8VB/c2eHF3Va2T20/0mSASIOZrTnmoVxLcYTzv+elki8hbetAeb1jDtQiQ0Y0Q==
+
 next@12.3.1:
   version "12.3.1"
   resolved "https://registry.npmjs.org/next/-/next-12.3.1.tgz"

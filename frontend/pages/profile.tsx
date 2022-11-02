@@ -46,12 +46,13 @@ const Profile: NextPage<Props> = ({loggedIn}: Props) => {
       credentials: "include",
       body: JSON.stringify({
         userId: form.ownerId.value,
-        text: form.searchText.value,
+        text: form.noteText.value,
       }),
       headers: {
         "Content-Type": "application/json",
       }
     });
+    form.noteText.value = "";
 
     // Fetch the updated profile
     await fetchProfile()
@@ -74,8 +75,8 @@ const Profile: NextPage<Props> = ({loggedIn}: Props) => {
 
       <h2>New Public Note</h2>
       <form action="#" onSubmit={submit}>
-        <label htmlFor="searchText">Note Content<br/>
-        <textarea id="searchText" name="searchText" required />
+        <label htmlFor="noteText">Note Content<br/>
+        <textarea id="noteText" name="noteText" required />
         </label><br />
         <input type="hidden" name="ownerId" value={ownerId || ''} />
         <input type="submit" disabled={!ownerId}/>

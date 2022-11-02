@@ -57,10 +57,10 @@ const Login: NextPage<Props> = ({loggedIn}: Props) => {
 
       <form action="#" onSubmit={logIn} method="POST">
         <label htmlFor="email">Email<br />
-        <input type="email" id="email" name="email" />
+        <input type="email" id="email" name="email" required />
         </label><br />
         <label htmlFor="password">Password<br />
-        <input type="password" name="password" />
+        <input type="password" name="password" required />
         </label><br />
         {error && <><b>{error}</b><br/></>}
         <label htmlFor="submit">Submit<br />

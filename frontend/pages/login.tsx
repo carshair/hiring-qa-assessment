@@ -55,7 +55,7 @@ const Login: NextPage<Props> = ({loggedIn}: Props) => {
         * Password: secure-password-for-assessment<br />
       </p>
 
-      <form action="#" onSubmit={logIn} method="POST">
+      <form action="#" onSubmit={logIn} method="POST" style={{textAlign: "center"}}>
         <label htmlFor="email">Email<br />
         <input type="email" id="email" name="email" required />
         </label><br />

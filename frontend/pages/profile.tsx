@@ -72,7 +72,7 @@ const Profile: NextPage<Props> = ({loggedIn}: Props) => {
         Profile
       </h1>
 
-      <h2>New Note</h2>
+      <h2>New Public Note</h2>
       <form action="#" onSubmit={submit}>
         <label htmlFor="searchText">Note Content<br/>
         <textarea id="searchText" name="searchText" required />

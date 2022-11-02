@@ -79,14 +79,14 @@ const Search: NextPage<Props> = ({loggedIn}: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1 className={styles.title}>
-        Search notes
+        Search public notes
       </h1>
 
       <p className={styles.description}>
-        Use the API to search notes in the note database
+        Use the API to search public notes
       </p>
 
-      <form action="#">
+      <form action="#" style={{textAlign: "center"}}>
         <label htmlFor="searchText">Search by Text<br/>
         <input type="text" id="searchText" name="searchText" onChange={changeSearch} />
         </label><br />

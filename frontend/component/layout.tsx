@@ -12,7 +12,7 @@ export interface Props {
 }
 export default function Layout({children, loggedIn}: Props): ReactElement {
   function logout() {
-    document.cookie = `token=`;
+    document.cookie = `token=;path=`;
     Router.reload();
   }
   return <div className={styles.container}>

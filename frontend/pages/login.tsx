@@ -30,7 +30,7 @@ const Login: NextPage<Props> = ({loggedIn}: Props) => {
       const login = await parseJsonResponse(response);
       if(login.authenticated) {
         setError("");
-        document.cookie = `token=${login.token}`;
+        document.cookie = `token=${login.token};path=/`;
         router.push('/');
       } else {
         setError("Your username or password was incorrect. Please try again.");

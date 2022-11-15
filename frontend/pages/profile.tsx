@@ -1,6 +1,7 @@
 import { getCookie } from 'cookies-next'
 import type { GetServerSideProps, GetServerSidePropsContext, NextPage } from 'next'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { FormEvent, useEffect, useState } from 'react'
 import Layout from '../component/layout'
 import { API_URL } from '../constants'
@@ -22,13 +23,19 @@ async function fetchProfile() {
 
 const Profile: NextPage<Props> = ({loggedIn}: Props) => {
   const token = getCookie('token');
+  const router = useRouter();
   useEffect(()=>{
-    fetchProfile()
-    .then((profile)=>{
-      setOwnerId(profile.user.id);
-      setNotes(profile.notes);
-    });
-  }, [token]);
+    if(!token) {
+      router.push("/");
+    } else {
+      fetchProfile()
+      .then((profile)=>{
+        setOwnerId(profile.user.id);
+        setNotes(profile.notes);
+      });
+    }
+  }, [token, router]);
+
 
   const [ownerId, setOwnerId] = useState();
   const [notes, setNotes] = useState<{
@@ -76,7 +83,7 @@ const Profile: NextPage<Props> = ({loggedIn}: Props) => {
       <h2>New Public Note</h2>
       <form action="#" onSubmit={submit}>
         <label htmlFor="noteText">Note Content<br/>
-        <textarea id="noteText" name="noteText" required />
+        <textarea id="noteText" name="noteText" required maxLength={255} />
         </label><br />
         <input type="hidden" name="ownerId" value={ownerId || ''} />
         <input type="submit" disabled={!ownerId}/>

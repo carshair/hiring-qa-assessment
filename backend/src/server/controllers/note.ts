@@ -1,4 +1,4 @@
-import { Body, CookieParams, Get, JsonController, Param, Post } from "routing-controllers";
+import { BadRequestError, Body, CookieParams, Get, JsonController, Param, Post } from "routing-controllers";
 import { NOTE_ROUTE } from "../../constants";
 import { AppDataSource } from "../../data-source";
 import { Note } from "../../entity/Note";
@@ -9,13 +9,18 @@ const Notes = AppDataSource.getRepository(Note);
 @JsonController(NOTE_ROUTE)
 export default class NoteController {
   @Post()
-  async home(@Body() body: NoteBody, @CookieParams() cookies: Record<string, string>) {
+  async create(@Body() body: NoteBody, @CookieParams() cookies: Record<string, string>) {
     const token = cookies.token;
     await login(token);
-    return Notes.save({
-      user: {id: body.userId},
-      text: body.text,
-    });
+    try {
+      return Notes.save({
+        user: {id: body.userId},
+        text: body.text,
+      });
+    } catch(err) {
+      console.debug(err);
+      throw new BadRequestError("Unable to save note");
+    }
   }
 
   @Get('/:noteId')
